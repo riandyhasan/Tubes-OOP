@@ -13,5 +13,37 @@ public class Monster {
         this.baseStats = baseStats;
         this.moves = moves;
     }
+
+    public String getNama(){
+        return nama;
+    }
+
+    public void setNama(String nama){
+        this.nama = nama;
+    }
+
+    public String getElementTypes(){
+        return elementTypes;
+    }
+
+    public void setElementTypes(ArrayList<ElementType> elementTypes){
+        this.elementTypes = elementTypes;
+    }
+
+    public Stats getBaseStats(){
+        return baseStats;
+    }
+
+    public void setBaseStats(Stats baseStats){
+        this.baseStats = baseStats;
+    }
+
+    public String getMoves(){
+        return moves;
+    }
+
+    public void setMoves(ArrayList<Move> moves){
+        this.moves = moves;
+    }
     
 }
