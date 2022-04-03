@@ -1,3 +1,5 @@
+package com.monstersaku.stats;
+
 public class Stats {
     private double healthPoint, attack, defense, specialAttack, specialDefense, speed;
     public Stats(double healthPoint, double attack, double defense, double specialAttack, double specialDefense, double speed) {
