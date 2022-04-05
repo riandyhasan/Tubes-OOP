@@ -1,3 +1,5 @@
+package com.monstersaku.stats;
+
 public class Buff{
     private static int MIN_BUFF = -4;
     private static int MAX_BUFF = 4;
