@@ -1,3 +1,9 @@
+package com.monstersaku.monster;
+
+import com.monstersaku.stats.Stats;
+import com.monstersaku.moves.Move;
+import com.monstersaku.elementtype.ElementType;
+
 import java.util.ArrayList;
 
 public class Monster {
@@ -22,7 +28,7 @@ public class Monster {
         this.nama = nama;
     }
 
-    public String getElementTypes(){
+    public ArrayList<ElementType> getElementTypes(){
         return elementTypes;
     }
 
@@ -38,7 +44,7 @@ public class Monster {
         this.baseStats = baseStats;
     }
 
-    public String getMoves(){
+    public ArrayList<Move> getMoves(){
         return moves;
     }
 
