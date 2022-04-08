@@ -1,5 +1,4 @@
 public class StatusCondition extends Stats{
-    private double healthPoint, attack, defense, specialAttack, specialDefense, speed, damage;
 
     public void burn(double healthPoint, double attack){
         healthPoint = this.healthPoint - this.healthPoint * 1/8;
