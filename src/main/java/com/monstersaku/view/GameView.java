@@ -1,5 +1,5 @@
 package com.monstersaku.view;
 
-public class GameView {
-    
+public interface GameView {
+    public void showMessage();
 }
