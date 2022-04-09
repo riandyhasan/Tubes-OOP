@@ -1,19 +1,28 @@
 package com.monstersaku.moves;
 
+import com.monstersaku.monster.Monster;
+import com.monstersaku.elementtype.ElementType;
+
 public abstract class Move {
-    private String elementTypes;
+    private ElementType elementTypes;
+    private int id;
     private int accuracy;
     private int priority;
     private int ammunition;
 
-    public Move(String elementTypes, int accuracy, int priority, int ammunition) {
+    public Move(int id, ElementType elementTypes, int accuracy, int priority, int ammunition) {
+        this.id = id;
         this.elementTypes = elementTypes;
         this.accuracy = accuracy;
         this.priority = priority;
         this.ammunition = ammunition;
     }
 
-    public String getElementTypes() {
+    public int getID(){
+        return id;
+    }
+
+    public ElementType getElementTypes() {
         return elementTypes;
     }
 
@@ -29,7 +38,7 @@ public abstract class Move {
         return ammunition;
     }
 
-    public void setElementTypes(String elementTypes) {
+    public void setElementTypes(ElementType elementTypes) {
         this.elementTypes = elementTypes;
     }
 
@@ -45,6 +54,6 @@ public abstract class Move {
         this.ammunition = ammunition;
     }
 
-    public abstract void doMove();
+    public abstract void doMove(Monster source, Monster target);
 
 }

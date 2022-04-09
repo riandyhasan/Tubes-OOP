@@ -1,12 +1,14 @@
 package com.monstersaku.moves;
 
-import com.monstersaku.moves.Move;
+import com.monstersaku.monster.Monster;
+import com.monstersaku.elementtype.ElementType;
+import com.monstersaku.effectivity.Effectivity;
 
 public class NormalMove extends Move {
     private int basePower;
 
-    public NormalMove(int basePower, String elementTypes, int accuracy, int priority, int ammunition) {
-        super(elementTypes, accuracy, priority, ammunition);
+    public NormalMove(int id, int basePower, ElementType elementTypes, int accuracy, int priority, int ammunition) {
+        super(id, elementTypes, accuracy, priority, ammunition);
         this.basePower = basePower;
     }
 
@@ -18,7 +20,14 @@ public class NormalMove extends Move {
         this.basePower = basePower;
     }
 
-    public void doMove(){
-
+    public void doMove(Monster source, Monster target){
+        double sourceAttack = source.getStats().getAttack();
+        double targetDefense = target.getStats().getDefense();
+        double randomize = (Math.random()*(1-0.85+1)+0.85);
+        double burn = source.getCondition().getCondition().equals("BURN") ? 0.5 : 1;
+        double effectivity = Effectivity.effectivity.getValue(super.getElementTypes(), target.getElementTypes().get(0));
+        double damage = basePower * (sourceAttack/targetDefense) * randomize * effectivity * burn;
+        target.moveDamage(damage);
+        super.setAmmunition(super.getAmmunitions() - 1);
     }
 }
