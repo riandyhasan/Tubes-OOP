@@ -1,16 +1,28 @@
 package com.monstersaku.stats;
 
 public class Buff{
-    private static int MIN_BUFF = -4;
-    private static int MAX_BUFF = 4;
-    private int attack, defense, specialAttack, specialDefense, speed;
+    private int HP, attack, defense, specialAttack, specialDefense, speed;
 
-    public Buff(int attack, int defense, int specialAttack, int specialDefense, int speed) {
-        this.attack = attack;
-        this.defense = defense;
-        this.specialAttack = specialAttack;
-        this.specialDefense = specialDefense;
-        this.speed = speed;
+    public Buff() {
+        this.HP = 0;
+        this.attack = 0;
+        this.defense = 0;
+        this.specialAttack = 0;
+        this.specialDefense = 0;
+        this.speed = 0;
+    }
+
+    public Buff(int HP, int attack, int defense, int specialAttack, int specialDefense, int speed) {
+      this.HP = HP;
+      this.attack = attack;
+      this.defense = defense;
+      this.specialAttack = specialAttack;
+      this.specialDefense = specialDefense;
+      this.speed = speed;
+    }
+
+    public int getHP(){
+      return HP;
     }
 
     public int getAttack(){
@@ -51,5 +63,30 @@ public class Buff{
 
     public void setSpeed(int speed){
         this.speed = speed;
+    }
+
+    public float getFactor(int buff){
+        switch(buff) {
+            case -4:
+              return 2/6;
+            case -3:
+              return 2/5;
+            case -2:
+              return 2/4;
+            case -1:
+              return 2/3;
+            case 0:
+              return 1;
+            case 1:
+              return 3/2;
+            case 2:
+              return 4/2;
+            case 3:
+              return 5/2;
+            case 4:
+              return 6/2;
+            default:
+              return 1;
+        }
     }
 }

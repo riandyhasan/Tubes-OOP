@@ -4,5 +4,6 @@ public enum Condition{
     BURN,
     POISON,
     SLEEP,
-    PARALYZE
+    PARALYZE,
+    NORMAL
 }
