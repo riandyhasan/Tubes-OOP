@@ -7,8 +7,8 @@ import com.monstersaku.effectivity.Effectivity;
 public class SpecialMove extends Move {
     private int basePower;
 
-    public SpecialMove(int id, int basePower, ElementType elementTypes, int accuracy, int priority, int ammunition) {
-        super(id, elementTypes, accuracy, priority, ammunition);
+    public SpecialMove(int id, String name, int basePower, ElementType elementTypes, int accuracy, int priority, int ammunition) {
+        super(id, name, elementTypes, accuracy, priority, ammunition);
         this.basePower = basePower;
     }
 

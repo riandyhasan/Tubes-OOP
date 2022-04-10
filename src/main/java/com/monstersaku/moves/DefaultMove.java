@@ -8,7 +8,7 @@ public class DefaultMove extends Move {
     private int basePower;
 
     public DefaultMove() {
-        super(0, ElementType.NORMAL, 100, 0, Integer.MAX_VALUE);
+        super(0, "Default Move", ElementType.NORMAL, 100, 0, Integer.MAX_VALUE);
         this.basePower = 50;
     }
 

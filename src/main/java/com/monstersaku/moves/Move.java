@@ -6,12 +6,14 @@ import com.monstersaku.elementtype.ElementType;
 public abstract class Move {
     private ElementType elementTypes;
     private int id;
+    private String name;
     private int accuracy;
     private int priority;
     private int ammunition;
 
-    public Move(int id, ElementType elementTypes, int accuracy, int priority, int ammunition) {
+    public Move(int id, String name, ElementType elementTypes, int accuracy, int priority, int ammunition) {
         this.id = id;
+        this.name = name;
         this.elementTypes = elementTypes;
         this.accuracy = accuracy;
         this.priority = priority;
@@ -20,6 +22,10 @@ public abstract class Move {
 
     public int getID(){
         return id;
+    }
+
+    public String getName(){
+        return name;
     }
 
     public ElementType getElementTypes() {

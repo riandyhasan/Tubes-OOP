@@ -9,8 +9,8 @@ public class StatusMove extends Move {
     private Buff buff;
     private StatusCondition condition;
 
-    public StatusMove(int id, ElementType elementTypes, int accuracy, int priority, int ammunition, Target target, String condition, int HP, int attack, int defense, int specialAttack, int specialDefense, int speed) {
-        super(id, elementTypes, accuracy, priority, ammunition);
+    public StatusMove(int id, String name, ElementType elementTypes, int accuracy, int priority, int ammunition, Target target, String condition, int HP, int attack, int defense, int specialAttack, int specialDefense, int speed) {
+        super(id, name, elementTypes, accuracy, priority, ammunition);
         this.buff = new Buff(HP, attack, defense, specialAttack, specialDefense, speed);
         this.target = target;
         this.condition = condition.equals("-") ? new StatusCondition() : new StatusCondition(Condition.valueOf(condition));

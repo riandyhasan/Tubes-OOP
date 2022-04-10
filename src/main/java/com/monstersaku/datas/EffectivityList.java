@@ -1,14 +1,15 @@
-package com.monstersaku.effectivity;
+package com.monstersaku.datas;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import com.monstersaku.util.CSVReader;
+import com.monstersaku.effectivity.ItemPair;
 import com.monstersaku.elementtype.ElementType;
 
 public class EffectivityList {
-    private static final String EFFECTIVITY_CSV_FILE_PATH = "src/main/resources/com/monstersaku/configs/element-type-effectivity-chart.csv";
+    private static final String EFFECTIVITY_CSV_FILE_PATH = "src/main/resources/com/monstersaku/configs/element-type-effectivity-config.csv";
     private List<ItemPair<ElementType>> effectivities;
     private List<String[]> rows;
     private CSVReader reader;

@@ -1,5 +1,6 @@
 package com.monstersaku.effectivity;
 
+import com.monstersaku.datas.EffectivityList;
 import com.monstersaku.elementtype.ElementType;
 import java.util.List;
 
