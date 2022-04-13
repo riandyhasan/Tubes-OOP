@@ -21,9 +21,7 @@ public class Main {
 
     public static void main(String[] args){
         readConfig();
-        List<Move> moveList = MoveList.getMoves();
-        List<Monster> monsterList = MonsterList.getMonsters();
-        // StartGame newgame = new StartGame();
-        // newgame.startTheGame();
+        StartGame game = new StartGame();
+        game.StartTheGame();
     }
 }

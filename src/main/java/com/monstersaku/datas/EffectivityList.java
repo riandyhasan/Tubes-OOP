@@ -1,7 +1,6 @@
 package com.monstersaku.datas;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import com.monstersaku.util.CSVReader;
@@ -21,7 +20,7 @@ public class EffectivityList {
     private static List<ItemPair<ElementType>> CreateEffectivityList(){
         List<ItemPair<ElementType>> effectivities = new ArrayList<ItemPair<ElementType>>();
         try{
-            CSVReader reader = new CSVReader(new File(Main.class.getClassLoader().getResource(filename).toURI()), ";");
+            CSVReader reader = new CSVReader(new File(Main.class.getResource(filename).toURI()), ";");
             reader.setSkipHeader(true);
             List<String[]> rows = reader.read();
             rows.forEach((row) -> {

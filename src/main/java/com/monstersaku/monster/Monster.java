@@ -17,9 +17,8 @@ public class Monster {
     private StatusCondition condition;
     private List<Move> moves;
     private Status status;
-    private boolean isActive;
 
-    public Monster(int id, String nama, List<ElementType> elementTypes, Stats stats, List<Move> moves, boolean isActive) {
+    public Monster(int id, String nama, List<ElementType> elementTypes, Stats stats, List<Move> moves) {
         this.id = id;
         this.nama = nama;
         this.elementTypes = elementTypes;
@@ -29,7 +28,6 @@ public class Monster {
         this.status = Status.ALIVE;
         this.condition = new StatusCondition();
         this.buff = new Buff();
-        this.isActive = isActive;
     }
 
     public int getID(){
@@ -70,10 +68,6 @@ public class Monster {
 
     public StatusCondition getCondition(){
         return this.condition;
-    }
-
-    public boolean getIsActive() {
-        return isActive;
     }
 
     public void setStats(Stats stats){

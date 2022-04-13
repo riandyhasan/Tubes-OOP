@@ -1,6 +1,10 @@
 package com.monstersaku.view;
 
 public class MainMenu implements GameView {
+    public static MainMenu INSTANCE = new MainMenu();
+    
+    public MainMenu() {};
+
     @Override
     public void showMessage(){
         System.out.println("GAME MENU");

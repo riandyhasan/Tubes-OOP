@@ -20,7 +20,7 @@ public class MoveList {
     private static List<Move> CreateMoveList(){
         List<Move> moves = new ArrayList<Move>();
         try{
-            CSVReader reader = new CSVReader(new File(Main.class.getClassLoader().getResource(filename).toURI()), ";");
+            CSVReader reader = new CSVReader(new File(Main.class.getResource(filename).toURI()), ";");
             reader.setSkipHeader(true);
             List<String[]> rows = reader.read();
             rows.forEach((row) -> {

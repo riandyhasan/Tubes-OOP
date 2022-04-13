@@ -1,6 +1,10 @@
 package com.monstersaku.view;
 
 public class TurnMenu implements GameView {
+    public static TurnMenu INSTANCE = new TurnMenu();
+    
+    public TurnMenu() {};
+    
     @Override
     public void showMessage(){
         System.out.println("GAME MENU");
