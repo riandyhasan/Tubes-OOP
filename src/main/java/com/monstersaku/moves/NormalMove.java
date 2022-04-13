@@ -7,8 +7,8 @@ import com.monstersaku.effectivity.Effectivity;
 public class NormalMove extends Move {
     private int basePower;
 
-    public NormalMove(int id, String name, int basePower, ElementType elementTypes, int accuracy, int priority, int ammunition) {
-        super(id, name, elementTypes, accuracy, priority, ammunition);
+    public NormalMove(int id, String name, int basePower, ElementType elementTypes, int accuracy, int priority, int ammunition, Target target) {
+        super(id, name, elementTypes, accuracy, priority, ammunition, target);
         this.basePower = basePower;
     }
 
@@ -25,7 +25,10 @@ public class NormalMove extends Move {
         double targetDefense = target.getStats().getDefense();
         double randomize = (Math.random()*(1-0.85+1)+0.85);
         double burn = source.getCondition().getCondition().equals("BURN") ? 0.5 : 1;
-        double effectivity = Effectivity.effectivity.getValue(super.getElementTypes(), target.getElementTypes().get(0));
+        double effectivity =  1;
+        for (ElementType et : target.getElementTypes()){
+            effectivity *= Effectivity.getValue(super.getElementTypes(), et);
+        }
         double damage = basePower * (sourceAttack/targetDefense) * randomize * effectivity * burn;
         target.moveDamage(damage);
         super.setAmmunition(super.getAmmunitions() - 1);

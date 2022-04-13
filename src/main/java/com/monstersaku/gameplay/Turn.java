@@ -19,7 +19,8 @@ public class Turn {
 
     public void playerTurn(Player player) {
         while(player.getIsTurn()){
-
+            System.out.println("Player turn");
+            player.setIsTurn(false);
         }
     }
 

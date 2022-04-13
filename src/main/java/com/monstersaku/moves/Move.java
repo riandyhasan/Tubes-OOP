@@ -10,14 +10,16 @@ public abstract class Move {
     private int accuracy;
     private int priority;
     private int ammunition;
+    private Target target;
 
-    public Move(int id, String name, ElementType elementTypes, int accuracy, int priority, int ammunition) {
+    public Move(int id, String name, ElementType elementTypes, int accuracy, int priority, int ammunition, Target target) {
         this.id = id;
         this.name = name;
         this.elementTypes = elementTypes;
         this.accuracy = accuracy;
         this.priority = priority;
         this.ammunition = ammunition;
+        this.target = target;
     }
 
     public int getID(){
@@ -42,6 +44,10 @@ public abstract class Move {
 
     public int getAmmunitions() {
         return ammunition;
+    }
+
+    public Target getTarget() {
+        return target;
     }
 
     public void setElementTypes(ElementType elementTypes) {

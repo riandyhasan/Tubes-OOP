@@ -1,26 +1,32 @@
 package com.monstersaku.player;
 
 import com.monstersaku.monster.Monster;
-import java.util.ArrayList;
+import java.util.List;
 
 public class Player {
     private String name;
-    private ArrayList<Monster> monsters;
+    private List<Monster> monsters;
+    private Monster currentMonster;
     private boolean isTurn;
 
 
-    public Player(String name, ArrayList<Monster> monsters) {
+    public Player(String name, List<Monster> monsters) {
         this.name = name;
         this.monsters = monsters;
         this.isTurn = true;
     }
 
+
     public String getName() {
         return name;
     }
 
-    public ArrayList<Monster> getMonsters() {
+    public List<Monster> getMonsters() {
         return monsters;
+    }
+
+    public Monster getCurrentMonster() {
+        return currentMonster;
     }
 
     public boolean getIsTurn(){
@@ -37,5 +43,9 @@ public class Player {
 
     public void setIsTurn(boolean isTurn){
         this.isTurn = isTurn;
+    }
+
+    public void setCurrentMonster(Monster currentMonster) {
+        this.currentMonster = currentMonster;
     }
 }

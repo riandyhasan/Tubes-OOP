@@ -8,7 +8,7 @@ public class DefaultMove extends Move {
     private int basePower;
 
     public DefaultMove() {
-        super(0, "Default Move", ElementType.NORMAL, 100, 0, Integer.MAX_VALUE);
+        super(0, "Default Move", ElementType.NORMAL, 100, 0, Integer.MAX_VALUE, Target.ENEMY);
         this.basePower = 50;
     }
 
@@ -25,7 +25,10 @@ public class DefaultMove extends Move {
         double targetDefense = target.getStats().getDefense();
         double randomize = (Math.random()*(1-0.85+1)+0.85);
         double burn = source.getCondition().getCondition().equals("BURN") ? 0.5 : 1;
-        double effectivity = Effectivity.effectivity.getValue(super.getElementTypes(), target.getElementTypes().get(0));
+        double effectivity =  1;
+        for (ElementType et : target.getElementTypes()){
+            effectivity *= Effectivity.getValue(super.getElementTypes(), et);
+        }
         double damage = basePower * (sourceAttack/targetDefense) * randomize * effectivity * burn;
         target.moveDamage(damage);
         super.setAmmunition(super.getAmmunitions() - 1);
