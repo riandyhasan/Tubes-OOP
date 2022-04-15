@@ -22,7 +22,7 @@ public class MonsterList {
         List<Monster> monsters = new ArrayList<Monster>();
         List<Move> mms = MoveList.getMoves();
         try{
-            CSVReader reader = new CSVReader(new File(Main.class.getClassLoader().getResource(filename).toURI()), ";");
+            CSVReader reader = new CSVReader(new File(Main.class.getResource(filename).toURI()), ";");
             reader.setSkipHeader(true);
             List<String[]> rows = reader.read();
             rows.forEach((row) -> {
@@ -35,10 +35,13 @@ public class MonsterList {
                 Stats stat = new Stats(Double.parseDouble(stats[0]), Double.parseDouble(stats[1]), Double.parseDouble(stats[2]), Double.parseDouble(stats[3]), Double.parseDouble(stats[4]), Double.parseDouble(stats[5]));
                 String[] monsterMoves = row[4].split(",");
                 List<Move> listMoves = new ArrayList<Move>();
+                DefaultMove dm = new DefaultMove();
+                listMoves.add(dm);
                 for(String mm : monsterMoves){
-                    listMoves.add(getMoveByID(Integer.parseInt(mm), mms));
+                    Move move = copyMove(getMoveByID(Integer.parseInt(mm), mms));
+                    listMoves.add(move);
                 }
-                Monster monster = new Monster(Integer.parseInt(row[0]), row[1], elementTypes, stat, listMoves, false);
+                Monster monster = new Monster(Integer.parseInt(row[0]), row[1], elementTypes, stat, listMoves);
                 monsters.add(monster);
             });
 
@@ -64,6 +67,13 @@ public class MonsterList {
         }
         return monsters;
     }
+
+    private static Move copyMove(Move m){
+        Move move = m;
+        move.setAmmunition(m.getAmmunitions());
+        return m;
+    }
+
 
 
 }

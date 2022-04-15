@@ -17,9 +17,8 @@ public class Monster {
     private StatusCondition condition;
     private List<Move> moves;
     private Status status;
-    private boolean isActive;
 
-    public Monster(int id, String nama, List<ElementType> elementTypes, Stats stats, List<Move> moves, boolean isActive) {
+    public Monster(int id, String nama, List<ElementType> elementTypes, Stats stats, List<Move> moves) {
         this.id = id;
         this.nama = nama;
         this.elementTypes = elementTypes;
@@ -29,7 +28,6 @@ public class Monster {
         this.status = Status.ALIVE;
         this.condition = new StatusCondition();
         this.buff = new Buff();
-        this.isActive = isActive;
     }
 
     public int getID(){
@@ -72,10 +70,6 @@ public class Monster {
         return this.condition;
     }
 
-    public boolean getIsActive() {
-        return isActive;
-    }
-
     public void setStats(Stats stats){
         this.stats = stats;
     }
@@ -109,6 +103,9 @@ public class Monster {
 
     public void applyBuff(){
         double newHP = this.stats.getHP() + (this.stats.getMaxHP() * (this.buff.getHP()/100));
+        if (newHP >  this.stats.getMaxHP()){
+            newHP = this.stats.getMaxHP();
+        }
         double newAttack = this.stats.getAttack() * this.buff.getFactor(this.buff.getAttack());
         double newDefense = this.stats.getDefense() * this.buff.getFactor(this.buff.getDefense());
         double newSpecialAttack = this.stats.getSpecialAttack() * this.buff.getFactor(this.buff.getSpecialAttack());

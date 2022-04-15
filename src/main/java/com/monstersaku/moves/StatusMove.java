@@ -3,6 +3,7 @@ package com.monstersaku.moves;
 import com.monstersaku.monster.Monster;
 import com.monstersaku.elementtype.ElementType;
 import com.monstersaku.stats.*;
+import com.monstersaku.view.*;
 
 public class StatusMove extends Move {
     private Buff buff;
@@ -15,13 +16,29 @@ public class StatusMove extends Move {
     }
 
     public void doMove(Monster source, Monster target){
-        if(super.getTarget() == Target.OWN){
+        if(getTarget() == Target.OWN){
+            if(!source.getCondition().getCondition().equals("NORMAL")){
+                source.removeBuff();
+            }
             source.setBuff(this.buff);
             source.applyBuff();
+            System.out.printf("%s apply buff to itself\n", source.getName());
+            System.out.printf("Now %s's stats\n", source.getName());
+            Info.INSTANCE.ShowMonsterStats(source);
         }else{
+            if(!target.getCondition().getCondition().equals("NORMAL")){
+                target.removeBuff();
+            }
             target.setBuff(this.buff);
             target.applyBuff();
             target.setCondition(condition);
+            if (!target.getCondition().getCondition().equals("NORMAL")){
+                System.out.printf("%s apply %s to %s\n", source.getName(), target.getCondition().getCondition(), target.getName());
+
+            }
+            System.out.printf("Now %s's stats\n", target.getName());
+            Info.INSTANCE.ShowMonsterStats(source);
         }
+        setAmmunition(getAmmunitions() - 1);
     }
 }

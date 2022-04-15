@@ -30,7 +30,8 @@ public class SpecialMove extends Move {
             effectivity *= Effectivity.getValue(super.getElementTypes(), et);
         }
         double damage = basePower * (sourceAttack/targetDefense) * randomize * effectivity * burn;
+        System.out.printf("%s take %.2f damage\n", target.getName(), damage);
         target.moveDamage(damage);
-        super.setAmmunition(super.getAmmunitions() - 1);
+        setAmmunition(getAmmunitions() - 1);
     }
 }

@@ -1,12 +1,12 @@
 package com.monstersaku.stats;
 
-import com.monstersaku.stats.Condition;
-
 public class StatusCondition{
     private Condition condition;
+    private int sleep;
 
     public StatusCondition(){
         this.condition = Condition.NORMAL;
+        this.sleep = 0;
     }
 
     public StatusCondition(Condition condition){
@@ -32,6 +32,14 @@ public class StatusCondition{
 
     public void setCondition(Condition condition) {
         this.condition = condition;
+    }
+
+    public int getSleepingTime(){
+        return sleep;
+    }
+
+    public void setSleepingTime(int sleepTime) {
+        this.sleep = sleepTime;
     }
 
 }

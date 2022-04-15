@@ -3,8 +3,8 @@ package com.monstersaku;
 import java.util.*;
 import com.monstersaku.datas.*;
 import com.monstersaku.gameplay.StartGame;
-import com.monstersaku.monster.Monster;
-import com.monstersaku.moves.*;
+// import com.monstersaku.monster.Monster;
+// import com.monstersaku.moves.*;
 
 
 public class Main {
@@ -14,16 +14,14 @@ public class Main {
         "configs/element-type-effectivity-chart.csv"));
 
     private static void readConfig() {
-        MoveList.setFilename(CSV_FILE_PATHS.get(1));
         MonsterList.setFilename(CSV_FILE_PATHS.get(0));
+        MoveList.setFilename(CSV_FILE_PATHS.get(1));
         EffectivityList.setFilename(CSV_FILE_PATHS.get(2));
     }
 
     public static void main(String[] args){
         readConfig();
-        List<Move> moveList = MoveList.getMoves();
-        List<Monster> monsterList = MonsterList.getMonsters();
-        // StartGame newgame = new StartGame();
-        // newgame.startTheGame();
+        StartGame game = new StartGame();
+        game.StartTheGame();
     }
 }
