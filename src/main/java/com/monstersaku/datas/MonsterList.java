@@ -38,7 +38,8 @@ public class MonsterList {
                 DefaultMove dm = new DefaultMove();
                 listMoves.add(dm);
                 for(String mm : monsterMoves){
-                    listMoves.add(getMoveByID(Integer.parseInt(mm), mms));
+                    Move move = copyMove(getMoveByID(Integer.parseInt(mm), mms));
+                    listMoves.add(move);
                 }
                 Monster monster = new Monster(Integer.parseInt(row[0]), row[1], elementTypes, stat, listMoves);
                 monsters.add(monster);
@@ -67,10 +68,12 @@ public class MonsterList {
         return monsters;
     }
 
-    private static Move copyMove(){
-        Move move = null;
-        return move;
+    private static Move copyMove(Move m){
+        Move move = m;
+        move.setAmmunition(m.getAmmunitions());
+        return m;
     }
+
 
 
 }

@@ -30,9 +30,12 @@ public class DefaultMove extends Move {
             effectivity *= Effectivity.getValue(super.getElementTypes(), et);
         }
         double damage = basePower * (sourceAttack/targetDefense) * randomize * effectivity * burn;
+        System.out.printf("%s take %.2f damage\n", target.getName(), damage);
         target.moveDamage(damage);
-        super.setAmmunition(super.getAmmunitions() - 1);
+        setAmmunition(super.getAmmunitions() - 1);
         double penalty = Math.floor(source.getStats().getMaxHP() * 1/4);
         source.moveDamage(penalty);
+        System.out.printf("%s use Default Move and take %.2f damage\n", source.getName(), penalty);
+
     }
 }

@@ -103,6 +103,9 @@ public class Monster {
 
     public void applyBuff(){
         double newHP = this.stats.getHP() + (this.stats.getMaxHP() * (this.buff.getHP()/100));
+        if (newHP >  this.stats.getMaxHP()){
+            newHP = this.stats.getMaxHP();
+        }
         double newAttack = this.stats.getAttack() * this.buff.getFactor(this.buff.getAttack());
         double newDefense = this.stats.getDefense() * this.buff.getFactor(this.buff.getDefense());
         double newSpecialAttack = this.stats.getSpecialAttack() * this.buff.getFactor(this.buff.getSpecialAttack());
