@@ -30,7 +30,7 @@ public class Turn {
         if(player.getCurrentMonster().getStatus() == Status.DEATH){
             player.getMonsters().remove(player.getCurrentMonster());
             if(player.getMonsters().size() < 1){
-                System.out.println(player.getName() + "has no monsters left");
+                System.out.println(player.getName() + " has no monsters left");
                 this.isGameOver = true;
                 player.setIsTurn(false);
                 this.winner = opponent;
@@ -59,7 +59,9 @@ public class Turn {
                     System.out.println("\n" + opponent.getName() + "'s monsters: ");
                     Info.INSTANCE.ShowMonsterInfo(opponent.getMonsters());
                 }else if(choice == 4){
-                    Info.INSTANCE.ShowTurnInfo(player, round);
+                    System.out.printf("\n======= ROUND %d =======\n", round);
+                    Info.INSTANCE.ShowTurnInfo(player);
+                    Info.INSTANCE.ShowTurnInfo(opponent);
                 }else if(choice == 5){
                     Help.INSTANCE.showMessage();
                 }else if(choice == 6){
@@ -185,7 +187,7 @@ public class Turn {
             System.out.printf("%s is dead :(\n", p2.getCurrentMonster().getName());
             player2.getMonsters().remove(player2.getCurrentMonster());
             if(player2.getMonsters().size() < 1){
-                System.out.println(player2.getName() + "has no monsters left");
+                System.out.println(player2.getName() + " has no monsters left");
                 this.isGameOver = true;
                 player2.setIsTurn(false);
                 this.winner = player1;
@@ -203,7 +205,7 @@ public class Turn {
                 System.out.printf("%s is dead :(\n", p1.getCurrentMonster().getName());
                 player1.getMonsters().remove(player1.getCurrentMonster());
                 if(player1.getMonsters().size() < 1){
-                    System.out.println(player1.getName() + "has no monsters left");
+                    System.out.println(player1.getName() + " has no monsters left");
                     this.isGameOver = true;
                     player1.setIsTurn(false);
                     this.winner = player1;
@@ -225,7 +227,7 @@ public class Turn {
             System.out.printf("%s is dead :(\n", p1.getCurrentMonster().getName());
             player1.getMonsters().remove(player1.getCurrentMonster());
             if(player1.getMonsters().size() < 1){
-                System.out.println(player1.getName() + "has no monsters left");
+                System.out.println(player1.getName() + " has no monsters left");
                 this.isGameOver = true;
                 player1.setIsTurn(false);
                 this.winner = player2;
@@ -243,7 +245,7 @@ public class Turn {
                 System.out.printf("%s is dead :(\n", p2.getCurrentMonster().getName());
                 player2.getMonsters().remove(player2.getCurrentMonster());
                 if(player2.getMonsters().size() < 1){
-                    System.out.println(player2.getName() + "has no monsters left");
+                    System.out.println(player2.getName() + " has no monsters left");
                     this.isGameOver = true;
                     player2.setIsTurn(false);
                     this.winner = player1;

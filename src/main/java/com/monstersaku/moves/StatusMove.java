@@ -1,5 +1,6 @@
 package com.monstersaku.moves;
 
+import java.util.Random;
 import com.monstersaku.monster.Monster;
 import com.monstersaku.elementtype.ElementType;
 import com.monstersaku.stats.*;
@@ -15,9 +16,17 @@ public class StatusMove extends Move {
         this.condition = condition.equals("-") ? new StatusCondition() : new StatusCondition(Condition.valueOf(condition));
     }
 
+    public Buff getBuff() {
+        return buff;
+    }
+
+    public StatusCondition getStatusCondition() {
+        return condition;
+    }
+
     public void doMove(Monster source, Monster target){
         if(getTarget() == Target.OWN){
-            if(!source.getCondition().getCondition().equals("NORMAL")){
+            if(source.getStats() != source.getInitialStats()){
                 source.removeBuff();
             }
             source.setBuff(this.buff);
@@ -26,11 +35,16 @@ public class StatusMove extends Move {
             System.out.printf("Now %s's stats\n", source.getName());
             Info.INSTANCE.ShowMonsterStats(source);
         }else{
-            if(!target.getCondition().getCondition().equals("NORMAL")){
+            if(target.getStats() != target.getInitialStats()){
                 target.removeBuff();
             }
             target.setBuff(this.buff);
             target.applyBuff();
+            if(condition.getCondition().equals("SLEEP")){
+                Random rn = new Random();
+                int sleepTime = rn.nextInt(7) + 1;
+                target.getCondition().setSleepingTime(sleepTime);
+            }
             target.setCondition(condition);
             if (!target.getCondition().getCondition().equals("NORMAL")){
                 System.out.printf("%s apply %s to %s\n", source.getName(), target.getCondition().getCondition(), target.getName());

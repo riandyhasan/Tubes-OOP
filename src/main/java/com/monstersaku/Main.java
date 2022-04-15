@@ -3,8 +3,6 @@ package com.monstersaku;
 import java.util.*;
 import com.monstersaku.datas.*;
 import com.monstersaku.gameplay.StartGame;
-// import com.monstersaku.monster.Monster;
-// import com.monstersaku.moves.*;
 
 
 public class Main {

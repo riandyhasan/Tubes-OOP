@@ -20,27 +20,8 @@ public class StartGame {
         try{
             Scanner scanner = new Scanner(System.in);
             Banner.INSTANCE.showMessage();
-            System.out.println("\n================ GAME START ================");
-            boolean startmenu = false;
-            while(!startmenu){
-                try{
-                    MainMenu.INSTANCE.showMessage();
-                    int mainmenu_choice = scanner.nextInt();
-                    if(mainmenu_choice == 1){
-                        startmenu = true;
-                    }else if(mainmenu_choice == 2){
-                        Help.INSTANCE.showMessage();
-                    }else if(mainmenu_choice == 3){
-                        System.out.println("Out from game! Bye-bye.");
-                        System.exit(0);
-                    }else{
-                        throw new Exception("Invalid input! Input between 1-3"); 
-                    }
-                }catch(Exception e){
-                    System.out.println(e.getMessage());
-                }
-            }
-
+            System.out.print("\n================ GAME START ================\n");
+            mainMenu(scanner);
             System.out.print("Masukkan nama pemain pertama: ");
             String name1 = scanner.nextLine();
             int random1 = (int)(5.0 * Math.random());
@@ -103,5 +84,28 @@ public class StartGame {
         Stats newStats = new Stats(ms.getMaxHP(), ms.getAttack(), ms.getDefense(), ms.getSpecialAttack(), ms.getSpecialDefense(), ms.getSpeed());
         Monster newMonster = new Monster(m.getID(), m.getName(), m.getElementTypes(), newStats, m.getMoves());
         return newMonster;
+    }
+
+    private void mainMenu(Scanner scanner){
+        boolean startmenu = false;
+        while(!startmenu){
+            try{
+                MainMenu.INSTANCE.showMessage();
+                int mainmenu_choice = scanner.nextInt();
+                scanner.nextLine();
+                if(mainmenu_choice == 1){
+                    startmenu = true;
+                }else if(mainmenu_choice == 2){
+                    Help.INSTANCE.showMessage();
+                }else if(mainmenu_choice == 3){
+                    System.out.println("Out from game! Bye-bye.");
+                    System.exit(0);
+                }else{
+                    throw new Exception("Invalid input! Input between 1-3"); 
+                }
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+            }
+        }
     }
 }
