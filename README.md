@@ -11,4 +11,4 @@
 2. Tulis "gradlew --console plain run" pada terminal
 
 
-![Game Interface](./assets/gameinterface.png)
+![Game Interface](/assets/gameinterface.png)
