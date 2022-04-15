@@ -1,22 +1,14 @@
-# IF2212 Project Template
+# Tugas Besar IF2122 Pemrograman Berorientasi Objek 
+## MonsterSaku
 
-Here is an example of project using gradle as the build tools.
-Try running these commands:
+# Kelompok 30 - Sahabat Pikachu
+- 18220012 - Fikri Muhammad F
+- 18220058 - Riandy Hasan
+- 1822082 - Sitanggang Jerry J. P.
 
-On linux:
-```bash
-./gradlew run
-```
+# Cara menjalankan MonsterSaku
+1. Buka terminal pada folder
+2. Tulis "gradlew --console plain run" pada terminal
 
-On windows:
-```cmd
-gradlew.bat run
-```
 
-Notice that it will run the `Main.java` inside the `com.monstersaku` package.
-In the command line you can see the data that is being read by `CSVReader.java`.
-
-What happen is when you use `./gradlew run`, it will start the main function in your app.
-For this app, the main function lives in `Main.java`.
-
-You can explore more about gradle [here](https://guides.gradle.org/creating-new-gradle-builds/)
+![Game Interface](/assets/gameinterface.jpg)

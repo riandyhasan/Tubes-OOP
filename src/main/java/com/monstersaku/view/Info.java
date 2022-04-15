@@ -3,7 +3,6 @@ package com.monstersaku.view;
 import java.util.List;
 import com.monstersaku.moves.*;
 import com.monstersaku.monster.Monster;
-import com.monstersaku.stats.*;
 import com.monstersaku.player.Player;
 
 public class Info {
@@ -25,7 +24,7 @@ public class Info {
         int i = 0;
         for(Monster m : monsters){
             System.out.printf("%d. %s\n", i+1, m.getName());
-            System.out.printf("Current HP: %.2f\n", m.getStats().getHP());
+            System.out.printf("Current HP: %.2f/%.2f\n", m.getStats().getHP(), m.getStats().getMaxHP());
             i += 1;
         }
         System.out.println("");
@@ -47,8 +46,7 @@ public class Info {
         System.out.println("");
     }
 
-    public void ShowTurnInfo(Player player, int round){
-        System.out.printf("\n======= ROUND %d =======\n", round);
+    public void ShowTurnInfo(Player player){
         System.out.printf("%s current monster: \n", player.getName());
         System.out.println(player.getCurrentMonster().getName());
         System.out.printf("Current HP: %s\n", player.getCurrentMonster().getStats().getHP());
@@ -90,7 +88,7 @@ public class Info {
     }
 
     public void ShowWinner(Player winner){
-        System.out.println("The winner of the game is:");
+        System.out.println("\nThe winner of the game is:");
         System.out.printf("============== %s ==============", winner.getName());
         System.exit(0);
     }

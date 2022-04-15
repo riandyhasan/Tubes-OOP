@@ -6,7 +6,7 @@ import java.util.List;
 import com.monstersaku.util.CSVReader;
 import com.monstersaku.elementtype.ElementType;
 import com.monstersaku.monster.Monster;
-import com.monstersaku.stats.Stats;
+import com.monstersaku.stats.*;
 import com.monstersaku.moves.*;
 import com.monstersaku.Main;
 
@@ -38,8 +38,22 @@ public class MonsterList {
                 DefaultMove dm = new DefaultMove();
                 listMoves.add(dm);
                 for(String mm : monsterMoves){
-                    Move move = copyMove(getMoveByID(Integer.parseInt(mm), mms));
-                    listMoves.add(move);
+                    Move move = getMoveByID(Integer.parseInt(mm), mms);
+                    if(move instanceof NormalMove){
+                        NormalMove nm = (NormalMove) move;
+                        NormalMove copy = new NormalMove(nm.getID(), nm.getName(), nm.getBasePower(), nm.getElementTypes(), nm.getAccuracy(), nm.getPriority(), nm.getAmmunitions(), nm.getTarget());
+                        listMoves.add(copy);
+                    }else if(move instanceof SpecialMove) {
+                        SpecialMove sm = (SpecialMove) move;
+                        SpecialMove copy = new SpecialMove(sm.getID(), sm.getName(), sm.getBasePower(), sm.getElementTypes(), sm.getAccuracy(), sm.getPriority(), sm.getAmmunitions(), sm.getTarget());
+                        listMoves.add(copy);
+                    }else if(move instanceof StatusMove){
+                        StatusMove sm = (StatusMove) move;
+                        Buff b = sm.getBuff();
+                        StatusMove copy = new StatusMove(sm.getID(), sm.getName(), sm.getElementTypes(), sm.getAccuracy(), sm.getPriority(), sm.getAmmunitions(), sm.getTarget(), sm.getStatusCondition().getCondition(), b.getHP(), b.getAttack(), b.getDefense(), b.getSpecialAttack(), b.getSpecialDefense(), b.getSpeed());
+                        listMoves.add(copy);
+                    }
+                    
                 }
                 Monster monster = new Monster(Integer.parseInt(row[0]), row[1], elementTypes, stat, listMoves);
                 monsters.add(monster);
@@ -67,13 +81,5 @@ public class MonsterList {
         }
         return monsters;
     }
-
-    private static Move copyMove(Move m){
-        Move move = m;
-        move.setAmmunition(m.getAmmunitions());
-        return m;
-    }
-
-
 
 }
