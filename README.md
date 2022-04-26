@@ -1,4 +1,4 @@
-# Tugas Besar IF2122 Pemrograman Berorientasi Objek 
+# Tugas Besar IF2212 Pemrograman Berorientasi Objek 
 ## MonsterSaku
 
 # Kelompok 30 - Sahabat Pikachu

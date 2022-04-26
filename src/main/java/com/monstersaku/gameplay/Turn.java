@@ -130,6 +130,9 @@ public class Turn {
                 System.out.printf("%s's %s do %s to itself\n", p1.getName(), p1.getCurrentMonster().getName(), mv1.getName());
             }
             mv1.doMove(p1.getCurrentMonster(),p2.getCurrentMonster());
+            if(mv1.getAmmunitions() < 0){
+                p1.getCurrentMonster().getMoves().remove(mv1);
+            }
         }
         else if(mv1 == null && mv2 != null){
             if(mv2.getTarget() == Target.ENEMY){
@@ -138,6 +141,9 @@ public class Turn {
                 System.out.printf("%s's %s do %s to itself\n", p2.getName(), p2.getCurrentMonster().getName(), mv2.getName());
             }
             mv2.doMove(p2.getCurrentMonster(),p1.getCurrentMonster());
+            if(mv2.getAmmunitions() < 0){
+                p2.getCurrentMonster().getMoves().remove(mv2);
+            }
         }else {}
     }
 
@@ -183,6 +189,9 @@ public class Turn {
             System.out.printf("%s's %s do %s to itself\n", p1.getName(), p1.getCurrentMonster().getName(), mv1.getName());
         }
         mv1.doMove(p1.getCurrentMonster(),p2.getCurrentMonster());
+        if(mv1.getAmmunitions() < 0){
+            p1.getCurrentMonster().getMoves().remove(mv1);
+        }
         if(p2.getCurrentMonster().getStatus() == Status.DEATH){
             System.out.printf("%s is dead :(\n", p2.getCurrentMonster().getName());
             player2.getMonsters().remove(player2.getCurrentMonster());
@@ -201,6 +210,9 @@ public class Turn {
                 System.out.printf("%s's %s do %s to itself\n", p2.getName(), p2.getCurrentMonster().getName(), mv2.getName());
             }
             mv2.doMove(p2.getCurrentMonster(),p1.getCurrentMonster());
+            if(mv2.getAmmunitions() < 0){
+                p2.getCurrentMonster().getMoves().remove(mv2);
+            }
             if(p1.getCurrentMonster().getStatus() == Status.DEATH){
                 System.out.printf("%s is dead :(\n", p1.getCurrentMonster().getName());
                 player1.getMonsters().remove(player1.getCurrentMonster());
@@ -223,6 +235,9 @@ public class Turn {
             System.out.printf("%s's %s do %s to itself\n", p2.getName(), p2.getCurrentMonster().getName(), mv2.getName());
         }
         mv2.doMove(p2.getCurrentMonster(),p1.getCurrentMonster());
+        if(mv2.getAmmunitions() < 0){
+            p2.getCurrentMonster().getMoves().remove(mv2);
+        }
         if(p1.getCurrentMonster().getStatus() == Status.DEATH){
             System.out.printf("%s is dead :(\n", p1.getCurrentMonster().getName());
             player1.getMonsters().remove(player1.getCurrentMonster());
@@ -241,6 +256,9 @@ public class Turn {
                 System.out.printf("%s's %s do %s to itself\n", p1.getName(), p1.getCurrentMonster().getName(), mv1.getName());
             }
             mv1.doMove(p1.getCurrentMonster(),p2.getCurrentMonster());
+            if(mv1.getAmmunitions() < 0){
+                p1.getCurrentMonster().getMoves().remove(mv1);
+            }
             if(p2.getCurrentMonster().getStatus() == Status.DEATH){
                 System.out.printf("%s is dead :(\n", p2.getCurrentMonster().getName());
                 player2.getMonsters().remove(player2.getCurrentMonster());
