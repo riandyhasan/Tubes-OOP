@@ -40,18 +40,18 @@ public class StatusMove extends Move {
             }
             target.setBuff(this.buff);
             target.applyBuff();
-            if(condition.getCondition().equals("SLEEP")){
-                Random rn = new Random();
-                int sleepTime = rn.nextInt(7) + 1;
-                target.getCondition().setSleepingTime(sleepTime);
-            }
             target.setCondition(condition);
-            if (!target.getCondition().getCondition().equals("NORMAL")){
+            if (!(target.getCondition().getCondition().equals("NORMAL"))){
                 System.out.printf("%s apply %s to %s\n", source.getName(), target.getCondition().getCondition(), target.getName());
-
+                if(condition.getCondition().equals("SLEEP")){
+                    Random rn = new Random();
+                    int sleepTime = rn.nextInt(7) + 1;
+                    target.getCondition().setSleepingTime(sleepTime);
+                    System.out.printf("%s sleep for %d turns\n", target.getName(), target.getCondition().getSleepingTime());
+                }
             }
             System.out.printf("Now %s's stats\n", target.getName());
-            Info.INSTANCE.ShowMonsterStats(source);
+            Info.INSTANCE.ShowMonsterStats(target);
         }
         setAmmunition(getAmmunitions() - 1);
     }
